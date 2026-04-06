@@ -40,8 +40,9 @@ const prisma = new PrismaClient()
 
 export async function GET(
   request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
+  const { id } = await params
   const session = await getServerSession()
 
   if (!session?.user?.email) {
@@ -63,7 +64,7 @@ export async function GET(
   }
 
   const application = await prisma.application.findUnique({
-    where: { id: params.id }
+    where: { id: id }
   })
 
   if (!application || application.userId !== user.id) {
@@ -74,7 +75,7 @@ export async function GET(
   }
 
   const history = await prisma.statusHistory.findMany({
-    where: { applicationId: params.id },
+    where: { applicationId: id },
     orderBy: { changedAt: "asc" }
   })
 
@@ -116,8 +117,9 @@ export async function GET(
  */
 export async function PATCH(
   request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
+  const { id } = await params
   const session = await getServerSession()
 
   if (!session?.user?.email) {
@@ -139,7 +141,7 @@ export async function PATCH(
   }
 
   const application = await prisma.application.findUnique({
-    where: { id: params.id }
+    where: { id: id }
   })
 
   if (!application || application.userId !== user.id) {
@@ -163,7 +165,7 @@ export async function PATCH(
   }
 
   const updated = await prisma.application.update({
-    where: { id: params.id },
+    where: { id: id },
     data: {
       ...(companyName && { companyName }),
       ...(roleTitle && { roleTitle }),
@@ -180,8 +182,9 @@ export async function PATCH(
 
 export async function DELETE(
   request: Request,
-  { params }: { params: { id: string } }
+    { params }: { params: Promise<{ id: string }> }
 ) {
+  const { id } = await params
   const session = await getServerSession()
 
   if (!session?.user?.email) {
@@ -203,7 +206,7 @@ export async function DELETE(
   }
 
   const application = await prisma.application.findUnique({
-    where: { id: params.id }
+    where: { id: id }
   })
 
   if (!application || application.userId !== user.id) {
@@ -214,11 +217,11 @@ export async function DELETE(
   }
 
   await prisma.statusHistory.deleteMany({
-    where: { applicationId: params.id }
+    where: { applicationId: id }
   })
 
   await prisma.application.delete({
-    where: { id: params.id }
+    where: { id: id }
   })
 
   return NextResponse.json(
