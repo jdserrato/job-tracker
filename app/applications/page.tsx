@@ -61,13 +61,13 @@ const STATUS_COLORS: Record<string, string> = {
  *
  * The non-null assertion (!) on session?.user?.email is safe here because
  * middleware has already guaranteed the user is authenticated before this
- * component runs. Without middleware this would be unsafe.
+ * component runs. Without middleware this would be unsafe. ****changed
  */
 export default async function ApplicationsPage() {
   const session = await getServerSession()
 
   const user = await prisma.user.findUnique({
-    where: { email: session?.user?.email! }
+    where: { email: session?.user?.email ?? "" }
   })
 
   const applications = await prisma.application.findMany({
@@ -90,7 +90,7 @@ export default async function ApplicationsPage() {
       {applications.length === 0 ? (
         <div className="text-center py-16 text-gray-500">
           <p className="text-lg">No applications yet.</p>
-          <p className="text-sm mt-1">Click "Add Application" to get started.</p>
+          <p className="text-sm mt-1">Click &quote;Add Application&quote; to get started.</p>
         </div>
       ) : (
         <div className="flex flex-col gap-4">

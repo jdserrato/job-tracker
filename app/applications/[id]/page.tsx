@@ -1,12 +1,3 @@
-// WHAT THIS FILE DOES:
-// This is the individual application detail page at /applications/[id].
-// It shows all the information for a single job application.
-// It also lets the user change the status of the application via a dropdown.
-// When the status changes, it sends a PATCH request to /api/applications/[id]
-// which updates the database and writes a new row to StatusHistory.
-// It also shows the full status history so the user can see every
-// status change and when it happened.
-
 /**
  * @fileoverview Individual application detail page for the JobTracker application.
  *
@@ -48,6 +39,24 @@ import { useEffect, useState } from "react"
 import { useRouter, useParams } from "next/navigation"
 import Link from "next/link"
 
+type Application = {
+  id: string
+  companyName: string
+  roleTitle: string
+  status: string
+  dateApplied: string
+  jobDescription: string | null
+  jobUrl: string | null
+  location: string | null
+  salaryRange: string | null
+}
+
+type StatusHistoryEntry = {
+  id: string
+  fromStatus: string | null
+  toStatus: string
+  changedAt: string
+}
 /**
  * All valid application status values in the order they typically occur
  * in a job application lifecycle. Used to populate the status dropdown.
@@ -102,9 +111,9 @@ export default function ApplicationDetailPage() {
   const id = params.id as string
 
   // The fetched application object — null until the initial fetch completes
-  const [application, setApplication] = useState<any>(null)
+  const [application, setApplication] = useState<Application | null>(null)
   // Full status history for this application — array of StatusHistory records
-  const [history, setHistory] = useState<any[]>([])
+  const [history, setHistory] = useState<StatusHistoryEntry[]>([])
   // True during the initial page load fetch — controls the loading placeholder
   const [loading, setLoading] = useState(true)
   // True while a status PATCH request is in flight — disables the dropdown and save button
@@ -306,7 +315,7 @@ export default function ApplicationDetailPage() {
           <p className="text-sm text-gray-400">No history yet.</p>
         ) : (
           <div className="flex flex-col gap-3">
-            {history.map((entry: any) => (
+            {history.map((entry: StatusHistoryEntry) => (
               <div key={entry.id} className="flex items-center gap-2 text-sm">
                 <span className="text-gray-400 text-xs">
                   {new Date(entry.changedAt).toLocaleDateString()}

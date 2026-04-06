@@ -1,13 +1,3 @@
-// WHAT THIS FILE DOES:
-// This is the stats dashboard page at localhost:3000/dashboard.
-// It fetches data from /api/stats and displays key metrics about
-// the user's job search in a clean card layout:
-//   - Total applications sent
-//   - Breakdown of applications by status
-//   - Applications submitted per week
-//   - Average days to first response
-// This page is protected by middleware - logged out users get redirected to /login.
-
 /**
  * @fileoverview Dashboard page for the JobTracker application.
  *
@@ -38,6 +28,13 @@
 import { useEffect, useState } from "react"
 import Link from "next/link"
 
+type Stats = {
+  totalApplications: number
+  avgDaysToResponse: number | null
+  byStatus: Record<string, number>
+  perWeek: Record<string, number>
+}
+
 const STATUS_COLORS: Record<string, string> = {
   APPLIED: "bg-blue-100 text-blue-800",
   PHONE_SCREEN: "bg-yellow-100 text-yellow-800",
@@ -56,7 +53,7 @@ const STATUS_COLORS: Record<string, string> = {
  */
 export default function DashboardPage() {
    // Holds the stats object returned by /api/stats — null until the fetch completes
-  const [stats, setStats] = useState<any>(null)
+  const [stats, setStats] = useState<Stats | null>(null)
   const [loading, setLoading] = useState(true)
 
     /**
