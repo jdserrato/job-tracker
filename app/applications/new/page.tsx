@@ -147,7 +147,7 @@ export default function NewApplicationPage() {
               name="companyName"
               value={form.companyName}
               onChange={handleChange}
-              className="w-full border rounded-md p-2 text-sm"
+              className="text-black w-full border rounded-md p-2 text-sm"
               placeholder="e.g. Google"
             />
           </div>
@@ -161,7 +161,7 @@ export default function NewApplicationPage() {
               name="roleTitle"
               value={form.roleTitle}
               onChange={handleChange}
-              className="w-full border rounded-md p-2 text-sm"
+              className="text-black w-full border rounded-md p-2 text-sm"
               placeholder="e.g. Software Developer"
             />
           </div>
@@ -175,7 +175,7 @@ export default function NewApplicationPage() {
               name="location"
               value={form.location}
               onChange={handleChange}
-              className="w-full border rounded-md p-2 text-sm"
+              className="text-black w-full border rounded-md p-2 text-sm"
               placeholder="e.g. Calgary, AB"
             />
           </div>
@@ -189,7 +189,7 @@ export default function NewApplicationPage() {
               name="salaryRange"
               value={form.salaryRange}
               onChange={handleChange}
-              className="w-full border rounded-md p-2 text-sm"
+              className="text-black w-full border rounded-md p-2 text-sm"
               placeholder="e.g. $80,000 - $100,000"
             />
           </div>
@@ -203,7 +203,7 @@ export default function NewApplicationPage() {
               name="jobUrl"
               value={form.jobUrl}
               onChange={handleChange}
-              className="w-full border rounded-md p-2 text-sm"
+              className="text-black w-full border rounded-md p-2 text-sm"
               placeholder="e.g. https://jobs.google.com/..."
             />
           </div>
@@ -217,7 +217,7 @@ export default function NewApplicationPage() {
               value={form.jobDescription}
               onChange={handleChange}
               rows={6}
-              className="w-full border rounded-md p-2 text-sm"
+              className="text-black w-full border rounded-md p-2 text-sm"
               placeholder="Paste the job description here..."
             />
           </div>
