@@ -86,187 +86,182 @@ export default function RegisterPage() {
       minHeight: "100vh",
       backgroundColor: "#F5F0E8",
       display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      justifyContent: "center",
+      padding: "48px 24px",
       fontFamily: "system-ui, sans-serif",
     }}>
 
-      {/* Left panel */}
-      <div style={{
-        flex: "1",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "space-between",
-        padding: "48px",
-        borderRight: "1px solid rgba(0,0,0,0.08)",
+      {/* Logo */}
+      <Link href="/" style={{
+        fontSize: "18px",
+        fontWeight: "700",
+        color: "#1a1a1a",
+        textDecoration: "none",
+        fontFamily: "Georgia, serif",
+        letterSpacing: "-0.02em",
+        marginBottom: "48px",
       }}>
-        <Link href="/" style={{
-          fontSize: "18px",
+        Jobsheets
+      </Link>
+
+      {/* Tagline */}
+      <div style={{ width: "100%", maxWidth: "360px", marginBottom: "48px" }}>
+        <div style={{
+          width: "40px",
+          height: "3px",
+          backgroundColor: "#C9A84C",
+          marginBottom: "20px",
+          borderRadius: "2px",
+        }} />
+        <p style={{
+          fontSize: "28px",
           fontWeight: "700",
           color: "#1a1a1a",
-          textDecoration: "none",
-          fontFamily: "Georgia, serif",
+          lineHeight: "1.3",
           letterSpacing: "-0.02em",
+          fontFamily: "Georgia, serif",
+          maxWidth: "280px",
+          margin: "0",
         }}>
-          Jobsheets
-        </Link>
-        <div>
-          <div style={{
-            width: "40px",
-            height: "3px",
-            backgroundColor: "#C9A84C",
-            marginBottom: "20px",
-            borderRadius: "2px",
-          }} />
-          <p style={{
-            fontSize: "28px",
-            fontWeight: "700",
-            color: "#1a1a1a",
-            lineHeight: "1.3",
-            letterSpacing: "-0.02em",
-            fontFamily: "Georgia, serif",
-            maxWidth: "280px",
-          }}>
-            Stop losing track<br />of where you applied.
-          </p>
-        </div>
-        <p style={{
-          fontSize: "12px",
-          color: "#999",
-          letterSpacing: "0.05em",
-        }}>
-          © 2026 JOBSHEETS BY JUAN DIEGO SERRATO
+          Stop losing track<br />of where you applied.
         </p>
       </div>
 
-      {/* Right panel */}
-      <div style={{
-        flex: "1",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        padding: "48px",
-      }}>
-        <div style={{ width: "100%", maxWidth: "360px" }}>
-          <h1 style={{
-            fontSize: "24px",
-            fontWeight: "700",
-            color: "#1a1a1a",
-            marginBottom: "8px",
-            letterSpacing: "-0.02em",
-            fontFamily: "Georgia, serif",
-          }}>
-            Create an account
-          </h1>
-          <p style={{
-            fontSize: "14px",
-            color: "#888",
-            marginBottom: "32px",
-          }}>
-            Free forever. No credit card required.
-          </p>
+      {/* Form card */}
+      <div style={{ width: "100%", maxWidth: "360px" }}>
+        <h1 style={{
+          fontSize: "24px",
+          fontWeight: "700",
+          color: "#1a1a1a",
+          marginBottom: "8px",
+          letterSpacing: "-0.02em",
+          fontFamily: "Georgia, serif",
+        }}>
+          Create an account
+        </h1>
+        <p style={{
+          fontSize: "14px",
+          color: "#888",
+          marginBottom: "32px",
+        }}>
+          Free forever. No credit card required.
+        </p>
 
-          {error && (
-            <div style={{
-              backgroundColor: "#fff0f0",
-              border: "1px solid #fcc",
-              borderRadius: "6px",
-              padding: "10px 14px",
-              fontSize: "13px",
-              color: "#c00",
-              marginBottom: "16px",
-            }}>
-              {error}
-            </div>
-          )}
-
-          <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
-            <input
-              type="text"
-              placeholder="Full name"
-              value={name}
-              onChange={e => setName(e.target.value)}
-              style={{
-                width: "100%",
-                padding: "10px 14px",
-                border: "1px solid rgba(0,0,0,0.15)",
-                borderRadius: "6px",
-                fontSize: "14px",
-                backgroundColor: "#fff",
-                color: "#1a1a1a",
-                outline: "none",
-                boxSizing: "border-box",
-              }}
-            />
-            <input
-              type="email"
-              placeholder="Email"
-              value={email}
-              onChange={e => setEmail(e.target.value)}
-              style={{
-                width: "100%",
-                padding: "10px 14px",
-                border: "1px solid rgba(0,0,0,0.15)",
-                borderRadius: "6px",
-                fontSize: "14px",
-                backgroundColor: "#fff",
-                color: "#1a1a1a",
-                outline: "none",
-                boxSizing: "border-box",
-              }}
-            />
-            <input
-              type="password"
-              placeholder="Password"
-              value={password}
-              onChange={e => setPassword(e.target.value)}
-              style={{
-                width: "100%",
-                padding: "10px 14px",
-                border: "1px solid rgba(0,0,0,0.15)",
-                borderRadius: "6px",
-                fontSize: "14px",
-                backgroundColor: "#fff",
-                color: "#1a1a1a",
-                outline: "none",
-                boxSizing: "border-box",
-              }}
-            />
-            <button
-              onClick={handleRegister}
-              disabled={loading}
-              style={{
-                width: "100%",
-                padding: "11px",
-                backgroundColor: loading ? "#d4b06a" : "#C9A84C",
-                color: "#fff",
-                border: "none",
-                borderRadius: "6px",
-                fontSize: "14px",
-                fontWeight: "500",
-                cursor: loading ? "not-allowed" : "pointer",
-                marginTop: "4px",
-              }}
-            >
-              {loading ? "Creating account..." : "Create account"}
-            </button>
-          </div>
-
-          <p style={{
+        {error && (
+          <div style={{
+            backgroundColor: "#fff0f0",
+            border: "1px solid #fcc",
+            borderRadius: "6px",
+            padding: "10px 14px",
             fontSize: "13px",
-            color: "#888",
-            textAlign: "center",
-            marginTop: "24px",
+            color: "#c00",
+            marginBottom: "16px",
           }}>
-            Already have an account?{" "}
-            <Link href="/login" style={{
-              color: "#C9A84C",
-              textDecoration: "none",
+            {error}
+          </div>
+        )}
+
+        <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+          <input
+            type="text"
+            placeholder="Full name"
+            value={name}
+            onChange={e => setName(e.target.value)}
+            style={{
+              width: "100%",
+              padding: "10px 14px",
+              border: "1px solid rgba(0,0,0,0.15)",
+              borderRadius: "6px",
+              fontSize: "14px",
+              backgroundColor: "#fff",
+              color: "#1a1a1a",
+              outline: "none",
+              boxSizing: "border-box",
+            }}
+          />
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={e => setEmail(e.target.value)}
+            style={{
+              width: "100%",
+              padding: "10px 14px",
+              border: "1px solid rgba(0,0,0,0.15)",
+              borderRadius: "6px",
+              fontSize: "14px",
+              backgroundColor: "#fff",
+              color: "#1a1a1a",
+              outline: "none",
+              boxSizing: "border-box",
+            }}
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={e => setPassword(e.target.value)}
+            style={{
+              width: "100%",
+              padding: "10px 14px",
+              border: "1px solid rgba(0,0,0,0.15)",
+              borderRadius: "6px",
+              fontSize: "14px",
+              backgroundColor: "#fff",
+              color: "#1a1a1a",
+              outline: "none",
+              boxSizing: "border-box",
+            }}
+          />
+          <button
+            onClick={handleRegister}
+            disabled={loading}
+            style={{
+              width: "100%",
+              padding: "11px",
+              backgroundColor: loading ? "#d4b06a" : "#C9A84C",
+              color: "#fff",
+              border: "none",
+              borderRadius: "6px",
+              fontSize: "14px",
               fontWeight: "500",
-            }}>
-              Sign in
-            </Link>
-          </p>
+              cursor: loading ? "not-allowed" : "pointer",
+              marginTop: "4px",
+            }}
+          >
+            {loading ? "Creating account..." : "Create account"}
+          </button>
         </div>
+
+        <p style={{
+          fontSize: "13px",
+          color: "#888",
+          textAlign: "center",
+          marginTop: "24px",
+        }}>
+          Already have an account?{" "}
+          <Link href="/login" style={{
+            color: "#C9A84C",
+            textDecoration: "none",
+            fontWeight: "500",
+          }}>
+            Sign in
+          </Link>
+        </p>
       </div>
+
+      {/* Footer */}
+      <p style={{
+        fontSize: "12px",
+        color: "#999",
+        letterSpacing: "0.05em",
+        marginTop: "48px",
+      }}>
+        © 2026 JOBSHEETS BY JUAN DIEGO SERRATO
+      </p>
+
     </div>
   )
 }

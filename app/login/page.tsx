@@ -89,6 +89,21 @@ return (
       fontFamily: "system-ui, sans-serif",
     }}>
 
+
+      {/* Logo */}
+      <Link href="/" style={{
+        fontSize: "18px",
+        fontWeight: "700",
+        color: "#1a1a1a",
+        textDecoration: "none",
+        fontFamily: "Georgia, serif",
+        letterSpacing: "-0.02em",
+        marginBottom: "48px",
+      }}>
+        Jobsheets
+      </Link>
+
+
               {/* Tagline */}
       <div style={{ width: "100%", maxWidth: "360px", marginBottom: "48px" }}>
         <div style={{
@@ -111,21 +126,6 @@ return (
           Your job search,<br />finally organised.
         </p>
       </div>
-
-      {/* Logo */}
-      <Link href="/" style={{
-        fontSize: "18px",
-        fontWeight: "700",
-        color: "#1a1a1a",
-        textDecoration: "none",
-        fontFamily: "Georgia, serif",
-        letterSpacing: "-0.02em",
-        marginBottom: "48px",
-      }}>
-        Jobsheets
-      </Link>
-
-
 
 
       {/* Form card */}
