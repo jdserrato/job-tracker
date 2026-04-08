@@ -89,6 +89,29 @@ return (
       fontFamily: "system-ui, sans-serif",
     }}>
 
+              {/* Tagline */}
+      <div style={{ width: "100%", maxWidth: "360px", marginBottom: "48px" }}>
+        <div style={{
+          width: "40px",
+          height: "3px",
+          backgroundColor: "#C9A84C",
+          marginBottom: "20px",
+          borderRadius: "2px",
+        }} />
+        <p style={{
+          fontSize: "28px",
+          fontWeight: "700",
+          color: "#1a1a1a",
+          lineHeight: "1.3",
+          letterSpacing: "-0.02em",
+          fontFamily: "Georgia, serif",
+          maxWidth: "280px",
+          margin: "0",
+        }}>
+          Your job search,<br />finally organised.
+        </p>
+      </div>
+
       {/* Logo */}
       <Link href="/" style={{
         fontSize: "18px",
@@ -101,6 +124,9 @@ return (
       }}>
         Jobsheets
       </Link>
+
+
+
 
       {/* Form card */}
       <div style={{
